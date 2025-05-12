@@ -1,0 +1,332 @@
+@layer base {
+  .calendar {
+    width: 100%;
+    height: 100%;
+    font-family: var(--font-family-base);
+    background-color: var(--card);
+    color: var(--card-foreground);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    padding: var(--spacing-4);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav {
+    position: absolute;
+    top: var(--spacing-4);
+    right: var(--spacing-4);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-1);
+  }
+
+  .button_previous,
+  .button_next {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: var(--radius-sm);
+    background-color: transparent;
+    color: var(--card-foreground);
+    border: none;
+    cursor: pointer;
+    transition: background-color var(--animation-duration-fast) ease;
+  }
+
+  .button_previous:hover,
+  .button_next:hover {
+    background-color: var(--muted);
+  }
+
+  .button_previous:active,
+  .button_next:active {
+    background-color: var(--muted);
+    transform: scale(0.97);
+  }
+
+  .button_previous svg,
+  .button_next svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    fill: currentColor;
+  }
+
+  .months {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--border);
+    padding: 2px;
+    border-radius: var(--radius-sm);
+  }
+
+  .month {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--card);
+    border-radius: var(--radius-sm);
+  }
+
+  .month_grid {
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    background-color: var(--border);
+    border-radius: var(--radius-sm);
+    padding: 2px;
+  }
+
+  .month_caption {
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--spacing-2);
+  }
+
+  .caption_label {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--card-foreground);
+  }
+
+  .weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin-bottom: var(--spacing-1);
+    width: 100%;
+  }
+
+  .weekday {
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--muted-foreground);
+  }
+
+  .week {
+    display: contents;
+  }
+
+  .cell {
+    position: relative;
+    background-color: var(--card);
+    border-radius: var(--radius-sm);
+  }
+
+  .day {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+  }
+
+  .day_button {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: transparent;
+    color: inherit;
+    font-size: 0.9rem;
+    font-weight: 400;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition:
+      background-color var(--animation-duration-fast) ease,
+      color var(--animation-duration-fast) ease;
+    padding: 0;
+  }
+
+  .day_button:hover {
+    background-color: var(--muted);
+    color: var(--card-foreground);
+  }
+
+  .day_button:active:hover {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    transform: scale(0.97);
+  }
+
+  .selected .day_button {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    font-weight: 500;
+  }
+
+    .selected .day_button:hover {
+    background-color: color-mix(in srgb, var(--primary) 90%, black);
+    color: var(--primary-foreground);
+  }
+
+  .today .day_button {
+    border: 1px solid var(--primary);
+    font-weight: 500;
+  }
+
+  .today.selected .day_button {
+    border-color: var(--primary-foreground);
+  }
+
+    .range_middle .day_button {
+    background-color: color-mix(in srgb, var(--primary) 10%, transparent);
+    color: var(--foreground);
+    border-radius: 0;
+  }
+
+  .range_end .day_button {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .outside .day_button {
+    color: var(--muted-foreground);
+    opacity: 0.6;
+  }
+
+  .disabled .day_button {
+    opacity: 0.3;
+    cursor: not-allowed;
+    background-color: transparent;
+    color: var(--card-foreground);
+  }
+
+  .disabled .day_button:hover {
+    background-color: transparent;
+  }
+
+  .footer {
+    margin-top: var(--spacing-4);
+    padding-top: var(--spacing-2);
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .chevron {
+    display: flex;
+  }
+
+  /* Schedule modifiers - these class names must match the modifier keys */
+  .fullDaySchedule:not(.selected) .day_button {
+    background-color: color-mix(in srgb, var(--primary) 20%, transparent);
+    color: var(--foreground);
+    font-weight: 500;
+  }
+
+  .morningSchedule:not(.selected) .day_button {
+    background-color: color-mix(in srgb, var(--info) 20%, transparent);
+    color: var(--foreground);
+    font-weight: 500;
+  }
+
+  .afternoonSchedule:not(.selected) .day_button {
+    background-color: color-mix(in srgb, var(--secondary) 20%, transparent);
+    color: var(--foreground);
+    font-weight: 500;
+  }
+
+  .fullDaySchedule:not(.selected) .day_button:hover {
+    background-color: color-mix(in srgb, var(--primary) 30%, transparent);
+  }
+
+  .morningSchedule:not(.selected) .day_button:hover {
+    background-color: color-mix(in srgb, var(--info) 30%, transparent);
+  }
+
+  .afternoonSchedule:not(.selected) .day_button:hover {
+    background-color: color-mix(in srgb, var(--secondary) 30%, transparent);
+  }
+
+  /* Ensure these classes are available for direct use by DayPicker */
+  .fullDaySchedule {
+    /* Base class for the modifier */
+  }
+
+  .morningSchedule {
+    /* Base class for the modifier */
+  }
+
+  .afternoonSchedule {
+    /* Base class for the modifier */
+  }
+
+  /* Add any other modifiers you might need here */
+  .hasEvent .day_button {
+    position: relative;
+  }
+
+  .hasEvent .day_button::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: var(--primary);
+  }
+
+  .isWeekend .day_button {
+    color: var(--muted-foreground);
+  }
+
+  /* New modifier for days with tasks */
+  .hasTasks .day_button {
+    position: relative;
+  }
+
+  .hasTasks .day_button::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: var(--accent);
+  }
+
+    /* Dark mode adjustments */
+  :global(.dark) .range_middle .day_button {
+    background-color: color-mix(in srgb, var(--primary) 20%, var(--background));
+    color: var(--foreground);
+  }
+
+  :global(.dark) .day_button:hover {
+    background-color: var(--muted);
+    color: var(--card-foreground);
+  }
+
+  :global(.dark) .day_button:active:hover {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+  }
+}

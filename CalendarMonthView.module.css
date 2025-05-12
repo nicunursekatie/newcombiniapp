@@ -1,0 +1,111 @@
+.monthView {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex: 1;
+  overflow: auto;
+  min-height: 0;
+}
+
+.monthCalendar {
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background);
+}
+
+.monthCalendar {
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background);
+}
+
+/* Modifier styles */
+.todayCell {
+  background-color: color-mix(in srgb, var(--primary) 12%, transparent);
+  box-shadow: inset 0 0 0 1.5px var(--primary);
+}
+
+.hasTasksCell {
+  background-color: color-mix(in srgb, var(--accent) 8%, transparent);
+}
+
+.hasTasksCell:hover {
+  background-color: color-mix(in srgb, var(--accent) 15%, transparent);
+}
+
+.hasHighPriorityTasksCell {
+  background-color: color-mix(in srgb, var(--error) 8%, transparent);
+}
+
+.hasHighPriorityTasksCell:hover {
+  background-color: color-mix(in srgb, var(--error) 15%, transparent);
+}
+
+.hasMediumPriorityTasksCell {
+  background-color: color-mix(in srgb, var(--warning) 8%, transparent);
+}
+
+.hasMediumPriorityTasksCell:hover {
+  background-color: color-mix(in srgb, var(--warning) 15%, transparent);
+}
+
+.hasLowPriorityTasksCell {
+  background-color: color-mix(in srgb, var(--info) 8%, transparent);
+}
+
+.hasLowPriorityTasksCell:hover {
+  background-color: color-mix(in srgb, var(--info) 15%, transparent);
+}
+
+/* Modifier styles */
+.todayCell {
+  background-color: color-mix(in srgb, var(--primary) 12%, transparent);
+  box-shadow: inset 0 0 0 1.5px var(--primary);
+}
+
+.hasTasksCell {
+  background-color: color-mix(in srgb, var(--accent) 8%, transparent);
+}
+
+.hasTasksCell:hover {
+  background-color: color-mix(in srgb, var(--accent) 15%, transparent);
+}
+
+.hasHighPriorityTasksCell {
+  background-color: color-mix(in srgb, var(--error) 8%, transparent);
+}
+
+.hasHighPriorityTasksCell:hover {
+  background-color: color-mix(in srgb, var(--error) 15%, transparent);
+}
+
+.hasMediumPriorityTasksCell {
+  background-color: color-mix(in srgb, var(--warning) 8%, transparent);
+}
+
+.hasMediumPriorityTasksCell:hover {
+  background-color: color-mix(in srgb, var(--warning) 15%, transparent);
+}
+
+.hasLowPriorityTasksCell {
+  background-color: color-mix(in srgb, var(--info) 8%, transparent);
+}
+
+.hasLowPriorityTasksCell:hover {
+  background-color: color-mix(in srgb, var(--info) 15%, transparent);
+}
+
+@media (max-width: 768px) {
+  .monthCalendar {
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,293 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  width: 100%;
+}
+
+.summary {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3);
+  background-color: color-mix(in srgb, var(--info) 10%, transparent);
+  border-radius: var(--radius);
+  border: 1px solid color-mix(in srgb, var(--info) 30%, transparent);
+  color: var(--foreground);
+  font-weight: 500;
+  font-size: 0.9375rem;
+}
+
+.subtasksList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.subtaskItem {
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background-color: color-mix(in srgb, var(--card) 80%, var(--muted));
+  overflow: hidden;
+  transition: box-shadow var(--animation-duration-fast) ease;
+}
+
+.subtaskItem:hover {
+  box-shadow: var(--shadow);
+}
+
+.subtaskHeader {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-3);
+  gap: var(--spacing-2);
+  position: relative;
+}
+
+.subtaskControls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.subtaskTitleContainer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.subtaskTitle {
+  font-size: 0.9375rem;
+  transition: color var(--animation-duration-fast) ease;
+}
+
+.subtaskTitle.completed {
+  text-decoration: line-through;
+  color: var(--muted-foreground);
+}
+
+.editButton {
+  opacity: 0;
+  transition: opacity var(--animation-duration-fast) ease;
+}
+
+.subtaskTitleContainer:hover .editButton {
+  opacity: 1;
+}
+
+.editTitleContainer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.editTitleInput {
+  flex: 1;
+}
+
+.editActions {
+  display: flex;
+  gap: var(--spacing-1);
+}
+
+.timeEstimateContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  margin-left: var(--spacing-2);
+}
+
+.timeEstimateInput {
+  width: 5rem;
+  height: 2rem;
+  font-size: 0.875rem;
+}
+
+.timeEstimateLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+  white-space: nowrap;
+}
+
+.subtaskMeta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  margin-left: auto;
+  margin-right: var(--spacing-2);
+}
+
+.priorityTag {
+  font-size: 0.75rem;
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-full);
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+.priority-low {
+  background-color: color-mix(in srgb, var(--info) 15%, transparent);
+  color: var(--info);
+}
+
+.priority-medium {
+  background-color: color-mix(in srgb, var(--warning) 15%, transparent);
+  color: var(--warning);
+}
+
+.priority-high {
+  background-color: color-mix(in srgb, var(--error) 15%, transparent);
+  color: var(--error);
+}
+
+.emotionalWeightTag {
+  font-size: 0.75rem;
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-full);
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+.emotional-minimal {
+  background-color: color-mix(in srgb, var(--secondary) 15%, transparent);
+  color: var(--secondary);
+}
+
+.emotional-significant {
+  background-color: color-mix(in srgb, var(--accent) 15%, transparent);
+  color: var(--accent);
+}
+
+.complexityTag {
+  font-size: 0.75rem;
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-full);
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+.complexity-easy {
+  background-color: color-mix(in srgb, var(--success) 15%, transparent);
+  color: var(--success);
+}
+
+.complexity-moderate {
+  background-color: color-mix(in srgb, var(--info) 15%, transparent);
+  color: var(--info);
+}
+
+.complexity-complex {
+  background-color: color-mix(in srgb, var(--warning) 15%, transparent);
+  color: var(--warning);
+}
+
+.expandTrigger {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted-foreground);
+  transition: color var(--animation-duration-fast) ease;
+  padding: var(--spacing-1);
+  border-radius: var(--radius-sm);
+  position: absolute;
+  right: var(--spacing-3);
+  top: var(--spacing-3);
+}
+
+.expandTrigger:hover {
+  color: var(--foreground);
+  background-color: var(--muted);
+}
+
+.expandTrigger[data-state="open"] {
+  transform: rotate(180deg);
+}
+
+.subtaskDetails {
+  padding: var(--spacing-3);
+  padding-top: 0;
+  border-top: 1px dashed var(--border);
+  margin-top: var(--spacing-1);
+  background-color: color-mix(in srgb, var(--card) 90%, var(--muted));
+}
+
+.detailsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-4);
+}
+
+.detailField {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.fieldLabel {
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+}
+
+.fieldIcon {
+  color: var(--muted-foreground);
+}
+
+.numberInput {
+  width: 100%;
+}
+
+.selectTrigger {
+  width: 100%;
+}
+
+.addSubtaskForm {
+  display: flex;
+  gap: var(--spacing-2);
+  margin-top: var(--spacing-2);
+}
+
+.addSubtaskInput {
+  flex: 1;
+}
+
+.emptyState {
+  padding: var(--spacing-4);
+  text-align: center;
+  color: var(--muted-foreground);
+  font-style: italic;
+  background-color: color-mix(in srgb, var(--card) 90%, var(--muted));
+  border-radius: var(--radius);
+  border: 1px dashed var(--border);
+}
+
+@media (max-width: 640px) {
+  .detailsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .subtaskHeader {
+    flex-wrap: wrap;
+  }
+  
+  .timeEstimateContainer {
+    order: 2;
+    margin-left: var(--spacing-6);
+  }
+  
+  .subtaskMeta {
+    order: 3;
+    margin-left: var(--spacing-6);
+    margin-top: var(--spacing-2);
+  }
+}

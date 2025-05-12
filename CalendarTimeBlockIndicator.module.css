@@ -1,0 +1,104 @@
+.timeBlockIndicator {
+  background: linear-gradient(to right, var(--info), color-mix(in srgb, var(--info) 85%, var(--info-foreground)));
+  color: var(--info-foreground);
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  transition: all var(--animation-duration-fast) ease;
+  box-shadow: var(--shadow);
+  position: absolute;
+  z-index: var(--z-content);
+}
+
+.timeBlockIndicator:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+  background: linear-gradient(to right, var(--info-hover), color-mix(in srgb, var(--info-hover) 85%, var(--info-foreground)));
+}
+
+.timeBlockIndicator:active {
+  transform: translateY(0);
+  background: linear-gradient(to right, var(--info-active), color-mix(in srgb, var(--info-active) 85%, var(--info-foreground)));
+}
+
+.timeBlockContent {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-1);
+}
+
+.clockIcon {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.timeBlockInfo {
+  flex: 1;
+  min-width: 0; /* Ensures text truncation works */
+}
+
+.timeBlockTitle {
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.timeRange {
+  font-size: 0.7rem;
+  opacity: 0.9;
+  margin-top: 2px;
+}
+
+.linkedTask {
+  margin-top: var(--spacing-1);
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  background-color: color-mix(in srgb, var(--info-foreground) 15%, transparent);
+  padding: var(--spacing-1);
+  border-radius: var(--radius-sm);
+}
+
+.linkedTaskLabel {
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.linkedTaskTitle {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.completed {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+/* Month view specific styles */
+.month {
+  max-width: 150px;
+  height: 18px;
+  font-size: 0.7rem;
+  padding: var(--spacing-1);
+}
+
+/* Week view specific styles */
+.week {
+  max-width: 90%;
+  z-index: var(--z-content);
+}
+
+/* Day view specific styles */
+.day {
+  position: relative;
+  margin-bottom: var(--spacing-2);
+  width: 100%;
+  max-width: none;
+  padding: var(--spacing-2) var(--spacing-3);
+}

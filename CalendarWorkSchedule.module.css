@@ -1,0 +1,211 @@
+.container {
+  display: inline-flex;
+  position: relative;
+}
+
+
+/* Month view styles */
+.monthCompactIndicator {
+  width: 16px;
+  height: 16px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: transform var(--animation-duration-fast) ease, 
+              box-shadow var(--animation-duration-fast) ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow);
+  position: relative;
+  z-index: var(--z-content-high);
+}
+
+.monthCompactIndicator:hover {
+  transform: scale(1.5);
+  box-shadow: var(--shadow-md);
+}
+
+.monthCompactIndicator .icon {
+  color: var(--background);
+  filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.5));
+}
+
+.monthIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: transform var(--animation-duration-fast) ease, 
+              box-shadow var(--animation-duration-fast) ease;
+  box-shadow: var(--shadow);
+  position: relative;
+  z-index: var(--z-content-high);
+}
+
+.monthIndicator:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-md);
+  animation: pulse 1s infinite alternate;
+}
+
+.monthIndicator .icon {
+  color: var(--background);
+  filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.5));
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: var(--shadow-md);
+  }
+  100% {
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.7), var(--shadow-md);
+  }
+}
+
+/* Week view styles */
+.weekIndicator {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: transform var(--animation-duration-fast) ease,
+              box-shadow var(--animation-duration-fast) ease;
+  box-shadow: var(--shadow);
+}
+
+.weekIndicator:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.weekIndicator .icon {
+  color: var(--background);
+}
+
+.weekIndicator .label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--background);
+}
+
+/* Day view styles */
+.dayIndicator {
+  padding: var(--spacing-3);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: transform var(--animation-duration-fast) ease,
+              box-shadow var(--animation-duration-fast) ease;
+  box-shadow: var(--shadow);
+  width: 100%;
+}
+
+.dayIndicator:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.dayHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-1);
+}
+
+.dayHeader .icon {
+  color: var(--background);
+}
+
+.title {
+  font-weight: 500;
+  color: var(--background);
+}
+
+.timeRange {
+  font-size: 0.875rem;
+  color: var(--background);
+  opacity: 0.9;
+  margin-left: calc(16px + var(--spacing-2)); /* Align with icon */
+}
+
+/* Schedule type styles */
+.full {
+  background-color: var(--primary);
+  border: 1px solid color-mix(in srgb, var(--primary) 70%, white);
+  color: var(--primary-foreground);
+}
+
+.morning {
+  background-color: var(--info);
+  border: 1px solid color-mix(in srgb, var(--info) 70%, white);
+  color: var(--info-foreground);
+}
+
+.afternoon {
+  background-color: var(--secondary);
+  border: 1px solid color-mix(in srgb, var(--secondary) 70%, white);
+  color: var(--secondary-foreground);
+}
+
+/* Ensure icon is visible on all backgrounds */
+.full .icon,
+.morning .icon,
+.afternoon .icon {
+  color: var(--background);
+  filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.5));
+}
+
+:global(.dark) .full .icon,
+:global(.dark) .morning .icon,
+:global(.dark) .afternoon .icon {
+  filter: drop-shadow(0px 0px 1px rgba(255, 255, 255, 0.5));
+}
+
+/* Tooltip styles */
+.tooltipContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.tooltipHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.tooltipIcon {
+  color: var(--muted-foreground);
+}
+
+.tooltipTitle {
+  font-weight: 500;
+}
+
+.tooltipTime {
+  margin-left: calc(14px + var(--spacing-2)); /* Align with icon */
+  font-size: 0.875rem;
+}
+
+.tooltipDate {
+  margin-top: var(--spacing-1);
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+}
+
+/* Dark mode adjustments */
+:global(.dark) .full {
+  border-color: color-mix(in srgb, var(--primary) 70%, black);
+}
+
+:global(.dark) .morning {
+  border-color: color-mix(in srgb, var(--info) 70%, black);
+}
+
+:global(.dark) .afternoon {
+  border-color: color-mix(in srgb, var(--secondary) 70%, black);
+}
